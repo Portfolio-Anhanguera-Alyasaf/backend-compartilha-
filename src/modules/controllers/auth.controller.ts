@@ -11,6 +11,6 @@ export class AuthController {
     @Post('login')
     async login(@Body() req: Usuario): Promise<any> {
         const usuario = req;
-        return await this.service.login(usuario);
+        return await this.service.login(usuario.email, usuario.senha);
     }
 }
