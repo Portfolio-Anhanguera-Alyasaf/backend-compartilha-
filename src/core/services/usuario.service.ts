@@ -20,4 +20,8 @@ export class UsuarioService {
     async findByEmail(email: string): Promise<Usuario | undefined> {
         return this.repository.findOne({ where: { email } });
     }
+
+    async buscarUsuarioById(id: number): Promise<Usuario | null> {
+        return this.repository.findOneById(id);
+    }
 }

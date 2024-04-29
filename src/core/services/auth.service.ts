@@ -23,6 +23,7 @@ export class AuthService {
         const usuario = await this.validarUsuarioByEmail(email);
         if (!usuario || !bcrypt.compareSync(senha, usuario.senha)) throw new UnauthorizedException('Crendenciais inválidas');
         const payload = { email: usuario.email, sub: usuario.id };
+
         return {
             access_token: this.jwtService.sign(payload),
         };

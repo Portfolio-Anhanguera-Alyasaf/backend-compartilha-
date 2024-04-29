@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Recurso } from "./recurso.entity";
+import { Solicitacao } from "./solicitacao.entity";
 
 @Entity('usuario')
 export class Usuario {
@@ -17,4 +18,10 @@ export class Usuario {
 
     @OneToMany(() => Recurso, recurso => recurso.usuario)
     recursos: Recurso[];
+
+    @OneToMany(() => Solicitacao, solicitacao => solicitacao.solicitante)
+    solicitacoesFeitas: Solicitacao;
+
+    @OneToMany(() => Solicitacao, solicitacao => solicitacao.proprietario)
+    solicitacoesRecebidas: Solicitacao[];
 }

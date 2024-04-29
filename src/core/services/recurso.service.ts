@@ -14,4 +14,12 @@ export class RecursoService {
         const recurso = this.repository.create({ ...entity, usuario: { id: idUsuario } });
         return await this.repository.save(recurso);
     }
+
+    async buscarRecursoPorNome(nome: string): Promise<Recurso | undefined> {
+        return this.repository.findOne({ where: { nome }, relations: ['usuario'] });
+    }
+
+    async verificarDisponibilidade(id: number): Promise<Recurso | null> {
+        return this.repository.findOne({ where: { id }, relations: ['usuario'] });
+    }
 }
