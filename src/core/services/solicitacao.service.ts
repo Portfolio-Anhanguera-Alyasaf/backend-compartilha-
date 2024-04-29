@@ -38,4 +38,15 @@ export class SolicitacaoService {
 
         await this.repository.save(solicitacao);
     }
+
+    async buscarSolicitacaoPorId(id: number): Promise<Solicitacao> {
+        return this.repository.findOne({ where: { id }, relations: ['proprietario'] });
+    }
+
+    async mudarStatusSolicitacao(id: number): Promise<void> {
+        const solicitacao = await this.buscarSolicitacaoPorId(id);
+        solicitacao.status = StatusSolicitacao.ENCERRADA;
+
+        await this.repository.save(solicitacao);
+    }
 }

@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { FeedBack } from "./feedback.entity";
 import { Recurso } from "./recurso.entity";
 import { Solicitacao } from "./solicitacao.entity";
 
@@ -24,4 +25,7 @@ export class Usuario {
 
     @OneToMany(() => Solicitacao, solicitacao => solicitacao.proprietario)
     solicitacoesRecebidas: Solicitacao[];
+
+    @OneToMany(() => FeedBack, feedback => feedback.avaliado)
+    feedbacksRecebidos: FeedBack[];
 }
