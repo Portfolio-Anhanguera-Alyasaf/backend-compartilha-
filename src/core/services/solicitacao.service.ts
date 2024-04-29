@@ -1,10 +1,9 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Solicitacao } from "../entities/solicitacao.entity";
 import { StatusSolicitacao } from "../enums/status.enum";
 import { SolicitacaoRepository } from "../repositories/solicitacao.repository";
 import { RecursoService } from "./recurso.service";
-import { UsuarioService } from "./usuario.service";
 
 @Injectable()
 export class SolicitacaoService {
@@ -12,7 +11,6 @@ export class SolicitacaoService {
         @InjectRepository(Solicitacao)
         private readonly repository: SolicitacaoRepository,
         private readonly recursoService: RecursoService,
-        private readonly usuarioService: UsuarioService
     ) { }
 
     async solicitarRecurso(idSolicitante: number, nomeRecurso: string): Promise<Solicitacao> {
@@ -28,8 +26,14 @@ export class SolicitacaoService {
         return this.repository.save(solicitacao);
     }
 
-    async confirmarAlocacao(id: number): Promise<void> {
-        const solicitacao = await this.repository.findOne({ where: { id } });
+    async confirmarAlocacao(idSolicitante: number, id: number): Promise<void> {
+        const solicitacao = await this.repository.findOne({ where: { id }, relations: ['proprietario'] });
+        if (!solicitacao) throw new NotFoundException('Solicitação não encontrada. Tente novamente mais tarde.');
+
+        const recursoProprietarioId = solicitacao.proprietario.id;
+        const usuarioAutenticadoId = idSolicitante;
+        if (recursoProprietarioId !== usuarioAutenticadoId) throw new UnauthorizedException('Você não tem permissão para confirmar esta alocação.');
+
         solicitacao.status = StatusSolicitacao.ACEITA;
 
         await this.repository.save(solicitacao);
