@@ -1,73 +1,31 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Projeto de extensão Anhanguera:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Aplicação:
+- Nome do aplicativo: Compartilhar+
+- Objetivo: Facilitar o compartilhamento de recursos entre os membros de uma comunidade, como ferramentas, equipamentos e conhecimentos, utilizando algoritmos simples para sugerir alocação eficientes.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Funcionalidades:
 
-## Description
+1 • Cadastro de usuários: Os usuários podem se cadastrar no aplicativo inserindo nome, e-mail e senha.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+2 • Lista de recursos: Cada usuário pode criar uma lista de recursos que está disposto a compartilhar, como ferramentas, livros, etc. Os recursos armazenados em uma estrutura de dados simples, como um array associado ao perfil do usuário.
 
-## Installation
+3 • Solicitação e alocação de recursos: Um usuário pode solicitar um recurso específico de outro usuário. Utilizando um algoritmo simples de alocação, o sistema verifica se o recurso está disponível, considera a proximidade geográfica dos usuários e sugere a alocação. Se o usuário que possui o recurso concordar, a alocação é confirmada e ambos recebem uma notificação.
 
-```bash
-$ npm install
-```
+4 • Feedback e avaliação: Após a conclusão do compartilhamento do recurso, os usuários podem deixar feedbacks e avaliações sobre a experiência. Essas avaliações ajudam a construir a reputação dos usuários na comunidade.
 
-## Running the app
+## Exemplo de fluxo:
+1 • Eduardo se cadastra no aplicativo e lista um martelo que está disposto a compartilhar.
+2 • Thais precisa de um martelo e solicita a Eduardo através do aplicativo.
+3 • O sistema verifica a disponibilidade do martelo e avisa Thais que está disponível para pegar com Eduardo. Lembrando que Eduardo tem que aprovar o compartilhamento.
+4 • Após o uso Thais deixa um feedback para Eduardo.
 
-```bash
-# development
-$ npm run start
+## Stack:
 
-# watch mode
-$ npm run start:dev
+[![My Skills](https://skillicons.dev/icons?i=ts,nest,postgres,react&perline=4)](https://skillicons.dev)
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- TypeScript
+- NestJs
+- PostgreSQL
+- TypeORM
+- React Native/Expo.
