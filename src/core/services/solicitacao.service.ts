@@ -49,4 +49,23 @@ export class SolicitacaoService {
 
         await this.repository.save(solicitacao);
     }
+
+    async buscarPorTodas(userId: number): Promise<Solicitacao[]> {
+        return this.repository.find({
+            where: {
+                proprietario: { id: userId },
+                status: StatusSolicitacao.PENDENTE
+            },
+            relations: ['recurso']
+        });
+    }
+
+    async buscarPorTodasFeitas(userId: number): Promise<Solicitacao[]> {
+        return this.repository.find({
+            where: {
+                solicitante: { id: userId },
+                status: StatusSolicitacao.ACEITA || StatusSolicitacao.ENCERRADA,
+            }
+        });
+    }
 }
