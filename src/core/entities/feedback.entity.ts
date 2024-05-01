@@ -9,8 +9,8 @@ export class FeedBack {
     @Column()
     comentario: string;
 
-    @Column({ type: 'int' })
-    avaliacao: number;
+    @Column()
+    avaliacao: string;
 
     @ManyToOne(() => Usuario)
     avaliador: Usuario;

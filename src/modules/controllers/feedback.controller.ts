@@ -13,7 +13,7 @@ export class FeedBackController {
     async avaliar(
         @Body('avaliadoId') avaliadoId: number,
         @Body('solicitacaoId') solicitacaoId: number,
-        @Body('nota') nota: number,
+        @Body('nota') nota: string,
         @Body('comentario') comentario: string,
         @Req() req,
     ): Promise<any> {

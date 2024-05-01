@@ -65,7 +65,8 @@ export class SolicitacaoService {
             where: {
                 solicitante: { id: userId },
                 status: StatusSolicitacao.ACEITA || StatusSolicitacao.ENCERRADA,
-            }
+            },
+            relations: ['proprietario']
         });
     }
 }

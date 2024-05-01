@@ -12,12 +12,12 @@ export class FeedBackService {
         private readonly solicitacaoService: SolicitacaoService
     ) { }
 
-    async avaliar(avaliadorId: number, avaliadoId: number, solicitacaoId: number, nota: number, comentario: string): Promise<FeedBack> {
+    async avaliar(avaliadorId: number, avaliadoId: number, solicitacaoId: number, nota: string, comentario: string): Promise<FeedBack> {
         const solicitacao = await this.solicitacaoService.buscarSolicitacaoPorId(solicitacaoId);
 
         if (!solicitacao) throw new NotFoundException('Essa solicitação não foi encontrada. Tente novamente mais tarde.');
 
-        if (solicitacao.proprietario.id !== avaliadorId) throw new UnauthorizedException('Você só pode avaliar o proprietário do recurso.');
+        if (solicitacao.proprietario.id === avaliadorId) throw new UnauthorizedException('Você só pode avaliar o proprietário do recurso.');
 
         this.solicitacaoService.mudarStatusSolicitacao(solicitacao.id);
 
